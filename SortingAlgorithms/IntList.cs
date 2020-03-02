@@ -5,114 +5,95 @@ namespace SortingAlgorithms
 {
     public class IntList
     {
-        private List<int> numList { get; set; }
-        
-        public IntList(){}
-        
+        public IntList()
+        {
+        }
+
         public IntList(int amount)
         {
-            this.numList = CreateRandomNumberList(amount);
+            NumList = CreateRandomNumberList(amount);
         }
-        
-        
+
+        private List<int> NumList { get; }
+
+
         public static List<int> CreateRandomNumberList(int numAmount)
         {
             var numberlist = new List<int>();
-            
+
             //Console.WriteLine("Enter amount of numbers");
-            
+
             // Fill List
-            for (var i = 0; i < numAmount; i++)
-            {
-                numberlist.Add(i);
-            }
-            
+            for (var i = 0; i < numAmount; i++) numberlist.Add(i);
+
             // Randomize List using Fisher-Yates Shuffle
             var rand = new Random();
             var n = numberlist.Count;
 
-            for (var i = numberlist.Count - 1; i > 1 ; i--)
+            for (var i = numberlist.Count - 1; i > 1; i--)
             {
                 var random = rand.Next(i + 1);
                 var value = numberlist[random];
                 numberlist[random] = numberlist[i];
                 numberlist[i] = value;
-                
             }
+
             return numberlist;
         }
 
         public void PrintList()
         {
-            foreach (var num in numList )
+            foreach (var num in NumList)
             {
                 Console.Write(num);
                 Console.Write("|");
             }
         }
-        
+
         public bool IsSorted()
         {
-            for (var i = 0; i < numList.Count-1; i++)
-            {
-                if (numList[i] >= numList[i + 1])
-                {
+            for (var i = 0; i < NumList.Count - 1; i++)
+                if (NumList[i] >= NumList[i + 1])
                     return false;
-                } 
-            }
             return true;
         }
 
 
-
         public List<int> BubbleSort()
         {
-            var x = numList.Count;
-            var iteration = 0;
-            for (var i = 0; i < x-1; i++)
-            {
-                for (var j = 0; j < x-i-1; j++)
-                    if (numList[j] > numList[j + 1])
-                    {
-                        var temp = numList[j];
-                        numList[j] = numList[j + 1];
-                        numList[j + 1] = temp;
-                    }
-                
-                iteration++;
-            }
+            var x = NumList.Count;
+            for (var i = 0; i < x - 1; i++)
+            for (var j = 0; j < x - i - 1; j++)
+                if (NumList[j] > NumList[j + 1])
+                {
+                    var temp = NumList[j];
+                    NumList[j] = NumList[j + 1];
+                    NumList[j + 1] = temp;
+                }
 
-            Console.WriteLine($"Number of Outer Iterations: {iteration}");
-            return numList;
+            return NumList;
         }
 
         public List<int> BubbleSortOptimized()
         {
-            var x = numList.Count;
-            var iteration = 0;
-            bool swap = true;
-            for (var i = 0; i < x-1; i++)
+            var x = NumList.Count;
+            bool swap;
+            for (var i = 0; i < x - 1; i++)
             {
-                for (var j = 0; j < x-i-1; j++)
-                    if (numList[j] > numList[j + 1])
+                swap = false;
+                for (var j = 0; j < x - i - 1; j++)
+                    if (NumList[j] > NumList[j + 1])
                     {
-                        var temp = numList[j];
-                        numList[j] = numList[j + 1];
-                        numList[j + 1] = temp;
+                        var temp = NumList[j];
+                        NumList[j] = NumList[j + 1];
+                        NumList[j + 1] = temp;
+                        swap = true;
                     }
-                
-                iteration++;
+
+                if (swap == false) break;
             }
 
-            Console.WriteLine($"Number of Outer Iterations: {iteration}");
-            return numList;
-            }
+            return NumList;
         }
-        
-        
-        
-        
-        
-        
     }
 }
