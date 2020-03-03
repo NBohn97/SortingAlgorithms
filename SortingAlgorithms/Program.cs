@@ -115,7 +115,7 @@ namespace SortingAlgorithms
         // Creates a File Filled with random int
         public static void CreateRandomNumberFile(StreamWriter stream)
         {
-            var numberlist = CreateRandomNumberList(stream);
+            var numberlist = CreateRandomNumberList();
 
             foreach (var number in numberlist) stream.WriteLine(number);
 
@@ -124,7 +124,7 @@ namespace SortingAlgorithms
 
 
         // Creates a list filled with randomized int 
-        public static List<int> CreateRandomNumberList(StreamWriter stream)
+        public static List<int> CreateRandomNumberList()
         {
             var numberlist = new List<int>();
 
