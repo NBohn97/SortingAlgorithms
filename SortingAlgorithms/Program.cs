@@ -9,8 +9,6 @@ namespace SortingAlgorithms
     {
         private static void Main(string[] args)
         {
-            /*
-            
             // Assign Name and Create Txt File 
             var path = AssignPath();
             var stream = CreateFile(path);
@@ -25,7 +23,7 @@ namespace SortingAlgorithms
             //var randList = CreateRandomNumberList(stream);
             
             // Create a sorted List
-            var sortList = new List<int>() {1,2,3,4,5,6,8,10,15,254,8651,50000}; 
+            //var sortList = new List<int>() {1,2,3,4,5,6,8,10,15,254,8651,50000}; 
             
             //Console.WriteLine(isSorted(randList));
             //sortList.ForEach(Console.WriteLine);
@@ -35,13 +33,16 @@ namespace SortingAlgorithms
             //convertedList.ForEach(Console.Write);
             Console.WriteLine(IsSorted(convertedList));
             
-            */
+            
 
             /*
             IntList newList = new IntList(25);
             newList.PrintList();
             Console.WriteLine(newList.IsSorted());
             */
+            
+            
+            /*
             Console.WriteLine("Enter amount of num:");
             var numAmount = int.Parse(Console.ReadLine());
 
@@ -80,12 +81,14 @@ namespace SortingAlgorithms
 
             Console.WriteLine($"\r\nTime Elapsed: {sw2.Elapsed}");
             Console.WriteLine("-------------------------------------------------");
+            */
+            
         }
 
 
         public static string AssignPath()
         {
-            var basepath = "E:\\Documents\\SolutionFiles\\AlgoSort\\";
+            const string basepath = "E:\\Documents\\SolutionFiles\\AlgoSort\\";
             Console.WriteLine("Enter a file name:");
             var filename = Console.ReadLine() + ".txt";
             var path = basepath + filename;
